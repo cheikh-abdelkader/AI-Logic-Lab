@@ -15,8 +15,8 @@ db = SessionLocal()
 # =========================
 # CONFIG PROF (SECRET)
 # =========================
-PROF_EMAIL = "prof@ai.com"
-PROF_PASSWORD = "1234"
+PROF_EMAIL = "Cheikhahmedtelmoud@gmail.com"
+PROF_PASSWORD = "SUPNUM2026"
 
 # =========================
 # QUESTIONS
