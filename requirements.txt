@@ -1,0 +1,7 @@
+streamlit
+sqlalchemy
+passlib
+pyjwt
+reportlab
+pandas
+matplotlib
