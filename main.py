@@ -298,7 +298,7 @@ elif st.session_state.page == "student":
         db.commit()
 
         st.session_state.user_id = user.id
-        st.session_state.questions = get_q(15)
+        st.session_state.questions = get_q(10)
         st.session_state.q_index = 0
         st.session_state.score = 0
         st.session_state.start_time = time.time()
