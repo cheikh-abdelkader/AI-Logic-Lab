@@ -10,7 +10,12 @@ from datetime import datetime, timezone
 
 st.set_page_config(layout="wide")
 
+# db = SessionLocal()
 db = SessionLocal()
+try:
+    users = db.query(User).all()
+finally:
+    db.close()
 
 # =========================
 # CONFIG PROF (SECRET)
@@ -293,9 +298,17 @@ elif st.session_state.page == "student":
     specialite = st.selectbox("Spécialité", ["RSS", "DSI", "DWM"])
 
     if st.button("Start"):
-        user = User(name=name, matricule=matricule, specialite=specialite)
-        db.add(user)
-        db.commit()
+        db = SessionLocal()
+        try:
+            user = User(name=name, matricule=matricule, specialite=specialite)
+            db.add(user)
+            db.commit()
+            db.refresh(user)
+        finally:
+            db.close()
+        # user = User(name=name, matricule=matricule, specialite=specialite)
+        # db.add(user)
+        # db.commit()
 
         st.session_state.user_id = user.id
         st.session_state.questions = get_q(10)
@@ -342,9 +355,6 @@ elif st.session_state.page == "quiz":
 
         st.rerun()
 
-# =========================
-# RESULT
-# =========================
 # =========================
 # RESULT
 # =========================
